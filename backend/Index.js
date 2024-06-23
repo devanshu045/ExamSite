@@ -1,5 +1,5 @@
 // console.log("jai ganesh")
-
+const sss = require('secrets.js-grempe');
 const crypto = require("crypto")
 
 const encryptObject = {};
@@ -29,4 +29,19 @@ const decryptfun = (encrupted,key,iv) => {
 const key = crypto.randomBytes(32)
 const iv = crypto.randomBytes(16)
 const checkque = encryptfun(question,key,iv);
-decryptfun(checkque,key,iv);
+
+
+// sss to divide that key so it can use at some time by some pepeole
+
+const sharekey = sss.share(key.toString('hex'),5,3);
+
+
+const selectshare = sharekey.slice(0,3)
+
+const keycheck = sss.combine(selectshare);
+const reconstructedKey = Buffer.from(keycheck, 'hex');
+
+decryptfun(checkque,reconstructedKey,iv);
+
+// console.log(keycheck);
+
