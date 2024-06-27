@@ -25,21 +25,22 @@ function Signup() {
   };
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
-    // axios.post("http://localhost:8080/signup", signformval)
-    //   .then((res) => {
-    //     console.log("Data sent successfully", res);
-    //     if (res.status === 200 ) {
-    //       navigate('/login');
-    //     }
+    axios.post("http://localhost:8080/teacher/Signin", signformval)
+      .then((res) => {
+        console.log("Data sent successfully", res);
+        if (res.status === 200 ) {
+          // navigate('/login');
+          console.log("data", res);
+        }
         
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error occurred", err);
-    //   });
+      })
+      .catch((err) => {
+        console.log("Error occurred", err);
+      });
 
-    // console.log("Form Submitted:", signformval);
+    console.log("Form Submitted:", signformval);
   };
 
   return (

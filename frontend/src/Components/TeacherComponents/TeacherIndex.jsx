@@ -7,11 +7,11 @@ import AddQuestions from './ManageExam/AddQuestions/AddQuestions'
 const TeacherIndex = () => {
   return (
     <div>
-      {/* <Signup/>
-      <TeacherLogin/> */}
+      <Signup/>
+      {/* <TeacherLogin/>*/}
 
       {/* <CreateExam/> */}
-      <AddQuestions/>
+      {/* <AddQuestions/> */}
     </div>
   )
 }

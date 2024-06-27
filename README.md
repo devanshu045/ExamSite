@@ -4,3 +4,4 @@
 
 # Ignore any node_modules directory
 /node_modules/
+node_modules/
