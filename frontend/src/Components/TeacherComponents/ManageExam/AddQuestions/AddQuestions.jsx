@@ -10,7 +10,8 @@ const AddQuestions = () => {
             optionA: '',
             optionB: '',
             optionC: '',
-            optionD: ''
+            optionD: '',
+            Answere:''
         }]);
     };
 
@@ -26,6 +27,11 @@ const AddQuestions = () => {
         console.log(questions); // Replace with your actual submission logic
         // Reset form or navigate away after submission if needed
     };
+
+    const handleDeleteQuestion = (index) => {
+        const newQuestion = questions.filter((val,ind)=> ind != index)
+                  setQuestions(newQuestion);
+    }
 
     return (
         <div className="Ques_Container">
@@ -77,6 +83,16 @@ const AddQuestions = () => {
                             onChange={(e) => handleChange(e, index)}
                             required
                         />
+                         <label htmlFor={`optionD_${index}`}>Correct Answere</label>
+                        <input
+                            type="text"
+                            id={`Answere_${index}`}
+                            name="Answere"
+                            value={question.optionD}
+                            onChange={(e) => handleChange(e, index)}
+                            required
+                        />
+                        <button onClick={()=>handleDeleteQuestion(index)}>Delete</button>
                     </div>
                 ))}
                 <button type="button" onClick={handleAddQuestion}>Add Question</button>
