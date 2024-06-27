@@ -1,12 +1,12 @@
 import './App.css';
-import TeacherMain from './Teacherview/TeacherMain';
+import TeacherIndex from './Components/TeacherComponents/TeacherIndex';
 
 function App() {
   return (
     <div className="App">
-     {/* radhe radhe */}
+     radhe radhe
        
-    <TeacherMain/>
+    <TeacherIndex/>
     </div>
   );
 }

@@ -1,0 +1,69 @@
+// CreateExam.scss
+
+.CreateExam_Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .CreateExam_Form {
+    width: 400px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .CreateExam_Form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .CreateExam_Form input {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .CreateExam_Form input[type="Date"],
+  .CreateExam_Form input[type="Time"] {
+    /* Adjust styles for Date and Time inputs */
+  }
+  
+  .CreateExam_Btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid gray;
+    color: rgb(61, 47, 47);
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin-top: 10px;
+  
+    &:hover {
+      background-color: rgb(23, 19, 19);
+      color: #fff;
+      border-color: gray;
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Example focus style */
+    }
+  
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
