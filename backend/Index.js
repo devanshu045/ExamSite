@@ -9,6 +9,7 @@ const port = 8080;
 app.use(cors());
 app.use(express.json());
 
+// db connections
 mongoose.connect('mongodb://127.0.0.1:27017/ExamSite', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -18,8 +19,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/ExamSite', {
     console.error("Error connecting to MongoDB:", err);
 });
 
+
+//routes
+
 app.use('/teacher', teacherRouter);
 
+
+// port listen
 app.listen(port, () => {
     console.log('Listening on port', port);
 });

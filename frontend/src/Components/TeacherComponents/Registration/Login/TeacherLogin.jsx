@@ -18,15 +18,15 @@ function TeacherLogin() {
   };
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
-    // axios.post("http://localhost:8080/login", valobj)
-    //   .then((res) => {
-    //     console.log("data send done", res);
-    //     navigate("/home")
-    //   })
-    //   .catch((err) => {
-    //     console.log("some error", err);
-    //   });
+    event.preventDefault();
+    axios.post("http://localhost:8080/teacher/Login", valobj)
+      .then((res) => {
+        console.log("data send done", res);
+        // navigate("/home")
+      })
+      .catch((err) => {
+        console.log("some error", err);
+      });
   };
 
   return (

@@ -14,5 +14,29 @@ exports.teacherSign =   (req, res) => {
         });
 };
 
+exports.teacherLogin = async  (req, res) => {
+    try {
+        console.log(req.body);
+        const { Email, password } = req.body;
+    
+        if (!Email) {
+            // throw new Error('Email is missing in req.body');
+            console.log("user not found 2")
+        }
+    
+        const finduser = await TeacherDetailsModel.findOne({ email: Email});
+    
+
+        if (!finduser) {
+            console.log('User not found');
+        } else {
+            console.log('User found:', finduser);
+        }
+    
+    } catch (error) {
+        console.error('Error in find user:', error);
+    }
+    
+}
 
 
