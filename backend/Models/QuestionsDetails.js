@@ -32,30 +32,7 @@ const QuestionSchema = new mongoose.Schema({
     Answere:{
         type:"String",
         required:true
-    },
-    ExamName:{
-        type:"String",
-        required:true
-    },
-    ExamDate:{
-        type:"date",
-        required:true
     }
-    ,
-    ExamTime:{
-        type:"time",
-        required:true
-    },
-    ExamTimeFrom:{
-        type:"time",
-        required:true
-    },
-    ExamTimeTo:{
-        type:"time",
-        required:true
-    }
-    
-
 })
 
 const QuestionsModel =  mongoose.model("QuestionsModel",QuestionSchema);

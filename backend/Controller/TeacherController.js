@@ -1,5 +1,6 @@
 const TeacherDetailsModel = require('../Models/TeacherDetails'); 
 const QuestionsModel = require('../Models/QuestionsDetails');
+const ExamDetailsModule = require('../Models/ExamDetails');
 
 
 exports.teacherSign =   (req, res) => {
@@ -55,6 +56,13 @@ exports.teacherAddQuestions = async (req,res) => {
 
 
 exports.CreateExam = (req,res) =>{
-
+    ExamDetailsModule.create(req.body)
+    .then(() => {
+        res.status(200).send("Data stored in database");
+    })
+    .catch((err) => {
+        console.error("Error storing data:", err);
+        res.status(500).send("Failed to store data");
+    });
 }
 
