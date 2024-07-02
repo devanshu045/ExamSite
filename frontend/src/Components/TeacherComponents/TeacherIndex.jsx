@@ -8,10 +8,10 @@ const TeacherIndex = () => {
   return (
     <div>
       {/* <Signup/>  */}
-      <TeacherLogin/>
+      {/* <TeacherLogin/> */}
 
       {/* <CreateExam/> */}
-      {/* <AddQuestions/> */}
+      <AddQuestions/>
     </div>
   )
 }
