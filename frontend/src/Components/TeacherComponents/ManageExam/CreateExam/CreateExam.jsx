@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./CreateExam.scss";
+import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateExam = () => {
   // Get current date for default date value
   const currentDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
+  const newuniqueId = uuidv4();
 
   const [ExamDetails, setExamDetails] = useState({
+    uniqueId:'',
     ExamName: '',
     ExamDate: '',
     ExamTime: '',
@@ -26,9 +30,26 @@ const CreateExam = () => {
     }));
     console.log(ExamDetails)
   };
+  
 
   const hangleFormSubmit = (event) => {
     event.preventDefault();
+    
+    if(!localStorage.getItem('uniqueId')){
+      localStorage.setItem("uniqueId",newuniqueId);
+      setExamDetails(pre =>({
+                    ...pre,
+                    uniqueId :newuniqueId
+      }))
+      axios.post("http://localhost:8080/teacher/CreateExam",ExamDetails).then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+
+   
      
   };
 
@@ -83,7 +104,7 @@ const CreateExam = () => {
           onChange={handleInputChange}
         />
 
-        <button type="submit" className="CreateExam_Btn">
+        <button type="submit"  className="CreateExam_Btn">
           Create
         </button>
       </form>

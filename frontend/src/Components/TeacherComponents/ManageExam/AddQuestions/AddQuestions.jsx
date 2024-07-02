@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AddQuestions.scss'; // Import your SCSS file
+import axios from 'axios';
 
 const AddQuestions = () => {
     const [questions, setQuestions] = useState([]);
@@ -24,8 +25,17 @@ const AddQuestions = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(questions); // Replace with your actual submission logic
-        // Reset form or navigate away after submission if needed
+        console.log(questions);
+
+           axios.post("http://localhost:8080/teacher/AddQuestions",questions)
+           .then((response) => {
+            console.log(response);
+           })
+           .catch((error) => {
+            console.log(error);
+           })
+
+        
     };
 
     const handleDeleteQuestion = (index) => {
@@ -83,12 +93,12 @@ const AddQuestions = () => {
                             onChange={(e) => handleChange(e, index)}
                             required
                         />
-                         <label htmlFor={`optionD_${index}`}>Correct Answere</label>
+                         <label htmlFor={`Answere_${index}`}>Correct Answere</label>
                         <input
                             type="text"
                             id={`Answere_${index}`}
                             name="Answere"
-                            value={question.optionD}
+                            value={question.Answere}
                             onChange={(e) => handleChange(e, index)}
                             required
                         />
