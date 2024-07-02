@@ -26,8 +26,9 @@ const AddQuestions = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(questions);
+           const uniqueId = localStorage.getItem('uniqueId');
 
-           axios.post("http://localhost:8080/teacher/AddQuestions",questions)
+           axios.post("http://localhost:8080/teacher/AddQuestions",{questions,uniqueId})
            .then((response) => {
             console.log(response);
            })
