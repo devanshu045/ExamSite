@@ -9,6 +9,8 @@ function TeacherLogin() {
     Password: "",
   });
 
+  const navigation = useNavigate();
+
   const handleChanges = (event) => {
     const { name, value } = event.target;
     setValObj((prevValObj) => ({
@@ -18,11 +20,12 @@ function TeacherLogin() {
   };
 
   const handleSubmit = (event) => {
+    navigation("/teacher/createexam")
     event.preventDefault();
     axios.post("http://localhost:8080/teacher/Login", valobj)
       .then((res) => {
         console.log("data send done", res);
-        // navigate("/home")
+        navigation("/teacher/createexam")
       })
       .catch((err) => {
         console.log("some error", err);
@@ -64,13 +67,13 @@ function TeacherLogin() {
             >
               Login
             </button>
-            {/* <Link
-              to="/signup"
+            <Link
+              to="/teacher/signup"
               href="#"
               className="tech_login_signup_link"
             >
               Create a new account.
-            </Link>  */}
+            </Link> 
           </div>
         </form>
       </div>
