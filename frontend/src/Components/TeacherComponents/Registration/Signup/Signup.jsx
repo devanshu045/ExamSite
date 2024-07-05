@@ -147,12 +147,12 @@ function Signup() {
             >
               Sign Up
             </button>
-            {/* <Link
-              to="/login"
+            <Link
+              to="/teacher/login"
               className="Tech_Sign_loginLink"
             >
               Already have an account?
-            </Link> */}
+            </Link>
           </div>
         </form>
       </div>

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./CreateExam.scss";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from "react-router-dom";
 
 const CreateExam = () => {
   // Get current date for default date value
   const currentDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
   const newuniqueId = uuidv4();
+  const navigator = useNavigate()
 
   const [ExamDetails, setExamDetails] = useState({
     uniqueId:'',
@@ -34,6 +36,7 @@ const CreateExam = () => {
 
   const hangleFormSubmit = (event) => {
     event.preventDefault();
+    navigator('/teacher/addquestion')
     
     if(!localStorage.getItem('uniqueId')){
       localStorage.setItem("uniqueId",newuniqueId);

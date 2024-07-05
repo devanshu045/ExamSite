@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './AddQuestions.scss'; // Import your SCSS file
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddQuestions = () => {
     const [questions, setQuestions] = useState([]);
+    const navigator = useNavigate();
 
     const handleAddQuestion = () => {
         setQuestions([...questions, {
@@ -25,6 +27,7 @@ const AddQuestions = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigator('/teacher/dashboard')
         console.log(questions);
            const uniqueId = localStorage.getItem('uniqueId');
 
