@@ -1,33 +1,32 @@
 const mongoose = require('mongoose');
 
 const TeacherDetailsSchema = new mongoose.Schema({
-    fullName :{
-          type: 'string',
-          required: true
-    },
-    email:{
-        type: 'string',
+    fullName: {
+        type: String,
         required: true
     },
-    phoneNumber:{
-        type: 'string',
+    email: {
+        type: String,
         required: true
     },
-    password:{
-        type: 'string',
+    phoneNumber: {
+        type: String,
         required: true
     },
-    dob:{
-        type: 'string',
+    password: {
+        type: String,
         required: true
-
     },
-    gender:{
-         type: 'string',
-         required: true
+    dob: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        required: true
     }
-})
+});
 
-const TeacherDetailsModle = mongoose.model('TeacherDetailsModle',TeacherDetailsSchema)
+const TeacherDetailsModel = mongoose.model('TeacherDetailsModel', TeacherDetailsSchema);
 
-module.exports = TeacherDetailsModle;
+module.exports = TeacherDetailsModel;

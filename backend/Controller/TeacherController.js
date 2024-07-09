@@ -35,24 +35,18 @@ exports.teacherLogin = async  (req, res) => {
 }
 
 
-exports.teacherAddQuestions = async (req,res) => {
-    console.log(req.body)
-    try{
-        for(let i=0; i<req.body.length; i++){
-            QuestionsModel.create(req.body[i]).then(() => {
-                res.status(200).send("Data stored in database");
-            })
-            .catch((err) => {
-                console.error("Error storing data:", err);
-                res.status(500).send("Failed to store data");
-            });
-        }
+exports.teacherAddQuestions = async (req, res) => {
+    try {
+        console.log("start");
+        console.log(req.body)
+        req.body.map(que => {
+            console.log(que)
+        })
     }
-    catch (error) {
-        console.error('Error in find user:', error);
-    }
+    catch{
 
-}
+    }
+};
 
 
 exports.CreateExam = (req,res) =>{

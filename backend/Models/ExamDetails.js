@@ -1,34 +1,32 @@
 const mongoose = require('mongoose');
 
-
-const ExamDetialsSchema = new mongoose.Schema({
-    uniqueId:{
-        type: 'string',
+const ExamDetailsSchema = new mongoose.Schema({
+    uniqueId: {
+        type: String,
         required: true
     },
-    ExamName:{
-        type:"String",
-        required:true
+    ExamName: {
+        type: String,
+        required: true
     },
-    ExamDate:{
-        type:"date",
-        required:true
+    ExamDate: {
+        type: Date,
+        required: true
+    },
+    ExamTime: {
+        type: String,
+        required: true
+    },
+    ExamTimeFrom: {
+        type: String,
+        required: true
+    },
+    ExamTimeTo: {
+        type: String,
+        required: true
     }
-    ,
-    ExamTime:{
-        type:"time",
-        required:true
-    },
-    ExamTimeFrom:{
-        type:"time",
-        required:true
-    },
-    ExamTimeTo:{
-        type:"time",
-        required:true
-    }
-})
+});
 
-const ExamDetailsModule = mongoose.models("ExamDetailsModel",ExamDetialsSchema)
+const ExamDetailsModel = mongoose.model("ExamDetailsModel", ExamDetailsSchema);
 
-module.exports  = ExamDetailsModule
+module.exports = ExamDetailsModel;
