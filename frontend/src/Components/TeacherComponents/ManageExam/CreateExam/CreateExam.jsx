@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const CreateExam = () => {
   // Get current date for default date value
   const currentDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
-  const newuniqueId = uuidv4();
   const navigator = useNavigate()
 
   const [ExamDetails, setExamDetails] = useState({
@@ -33,24 +32,31 @@ const CreateExam = () => {
     console.log(ExamDetails)
   };
   
+  const generateUniqueId = () => {
+   const  newuniqueid = uuidv4();
+    return newuniqueid;
+
+  };
 
   const hangleFormSubmit = (event) => {
     event.preventDefault();
-    navigator('/teacher/addquestion')
     
-    if(!localStorage.getItem('uniqueId')){
+    // if(!localStorage.getItem('uniqueId')){
+      const newuniqueId = generateUniqueId();
       localStorage.setItem("uniqueId",newuniqueId);
       setExamDetails(pre =>({
                     ...pre,
                     uniqueId :newuniqueId
       }))
+      console.log(ExamDetails)
       axios.post("http://localhost:8080/teacher/CreateExam",ExamDetails).then((response) => {
         console.log(response)
+        navigator('/teacher/addquestion')
       })
       .catch((error) => {
         console.log(error)
       })
-    }
+    // }
 
    
      

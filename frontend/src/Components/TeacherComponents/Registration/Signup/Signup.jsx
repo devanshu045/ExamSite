@@ -14,7 +14,7 @@ function Signup() {
     dob: "",
   });
 
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChanges = (event) => {
     const { name, value } = event.target;
@@ -31,10 +31,9 @@ function Signup() {
       .then((res) => {
         console.log("Data sent successfully", res);
         if (res.status === 200 ) {
-          // navigate('/login');
+          navigate('/teacher/login');
           console.log("data", res);
         }
-        
       })
       .catch((err) => {
         console.log("Error occurred", err);
