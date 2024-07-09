@@ -7,6 +7,7 @@ import MainApp from './Components/MainApp';
 import CreateExam from './Components/TeacherComponents/ManageExam/CreateExam/CreateExam';
 import AddQuestions from './Components/TeacherComponents/ManageExam/AddQuestions/AddQuestions';
 import TeacherDashboard from './Components/TeacherComponents/TeacherDashboard/TeacherDashboard';
+import MainAppstd from './Components/StudentComponents/MainAppstd';
 
 function App() {
   return (
@@ -16,13 +17,15 @@ function App() {
        <BrowserRouter>
           <Routes>
             <Route path = '/' element={<MainApp/>}/>
-             <Route  path="/teacher" element={ <TeacherIndex/>}/>
+             <Route  path="/teacher/login" element={ <TeacherIndex/>}/>
              <Route path="/teacher/signup" element={<Signup/>}/>  
              <Route path="/teacher/createexam" element={<CreateExam/>}/>
              <Route path="/teacher/addquestion" element={<AddQuestions/>}/>
              <Route path="/teacher/dashboard" element={<TeacherDashboard/>}/>
-             
+
+             <Route path='/student' element={<MainAppstd/>}/>
           </Routes>       
+
           
           
           

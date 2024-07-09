@@ -4,10 +4,9 @@ const { teacherSign, teacherLogin, teacherAddQuestions, CreateExam } = require('
 const router = express.Router();
 
 router.post('/Signin', teacherSign);
-router.post('/Login', teacherLogin)
-// router.post('/AddQuestions', teacherAddQuestions)
-// router.post('/CreateExam',CreateExam)
-// Define more routes here as needed
+router.post('/Login', teacherLogin);
+router.post('/AddQuestions', teacherAddQuestions)
+router.post('/CreateExam',CreateExam)
+
 
 module.exports = router;
-

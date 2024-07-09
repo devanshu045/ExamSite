@@ -5,7 +5,7 @@ import './MainApp.scss'
 const MainApp = () => {
   return (
     <div>
-        <Link to='/teacher'>
+        <Link to='/teacher/login'>
           <button>
             Teacher 
           </button>
