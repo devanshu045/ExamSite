@@ -21,7 +21,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/ExamSite', {
 
 
 //routes
-
 app.use('/teacher', teacherRouter);
 
 

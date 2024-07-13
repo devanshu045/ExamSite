@@ -25,9 +25,10 @@ exports.teacherLogin = async  (req, res) => {
         }
         const finduser = await TeacherDetailsModel.findOne({ email: Email});
         if (!finduser) {
-            console.log('User not found');
+            res.status(500).send("User Not fount")
         } else {
             console.log('User found:', finduser);
+            res.status(200).send("user Found")
         }
     } catch (error) {
         console.error('Error in find user:', error);
@@ -36,18 +37,19 @@ exports.teacherLogin = async  (req, res) => {
 
 
 exports.teacherAddQuestions = async (req, res) => {
-    try {
-        console.log("start");
-        console.log(req.body)
-        req.body.map(que => {
-            console.log(que)
-        })
-    }
-    catch{
+    console.log(req.body);
 
+    try {
+        // Use Promise.all to wait for all create operations to complete
+        await Promise.all(req.body.map(question => {
+            return QuestionsModel.create(question);
+        }));
+        res.status(200).json({ message: "Questions added successfully" });
+    } catch (error) {
+        console.error("Error adding questions:", error);
+        res.status(500).json({ message: "An error occurred while adding questions", error: error.message });
     }
 };
-
 
 exports.CreateExam = (req,res) =>{
     ExamDetailsModule.create(req.body)
@@ -60,3 +62,20 @@ exports.CreateExam = (req,res) =>{
     });
 }
 
+
+
+exports.teacherAllExam = (req, res) => {
+    const {Email} = req.query;
+    console.log("haa bhai kuch hua hai")
+  
+  try{
+      const getExamsDetails = ExamDetailsModule.find({Email});
+      consolg.log(getExamsDetails);
+      res.status(200).send(getExamsDetails);
+  }
+
+  catch{
+      consolg.log("kuch sahi nhi hai")
+  }
+
+}

@@ -17,11 +17,7 @@ const ExamDetailsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    ExamTimeFrom: {
-        type: String,
-        required: true
-    },
-    ExamTimeTo: {
+    ExamDuration: {
         type: String,
         required: true
     }
