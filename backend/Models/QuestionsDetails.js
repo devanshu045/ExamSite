@@ -5,23 +5,23 @@ const QuestionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Questions: {
+    question: {
         type: String,
         required: true
     },
-    OptionA: {
+    optionA: {
         type: String
     },
-    OptionB: {
+    optionB: {
         type: String
     },
-    OptionC: {
+    optionC: {
         type: String
     },
-    OptionD: {
+    optionD: {
         type: String
     },
-    Answere: {
+    answere: {
         type: String,
         required: true
     }
