@@ -1,52 +1,54 @@
-// Variables
-$primary-color: #4CAF50;
-$secondary-color: #008CBA;
-$text-color: #fff;
-$button-padding: 10px 20px;
-$button-border-radius: 5px;
-$button-margin: 10px;
-
-// General Styles
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-// MainApp Styles
-div {
+.main-app {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  // width: 40%;
+  .Main-headding{
+    width: 80%;
+    text-align: center;
+    height: 15%;
+    font-size: 50px;
+    color: gray;
 
-button {
-  background-color: $primary-color;
-  border: none;
-  color: $text-color;
-  padding: $button-padding;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: $button-margin;
-  border-radius: $button-border-radius;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: darken($primary-color, 10%);
   }
 
-  &:first-of-type {
-    background-color: $secondary-color;
+  .link {
+    margin: 10px 0;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
 
-    &:hover {
-      background-color: darken($secondary-color, 10%);
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      width: 40%;
+      height: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.teacher-button {
+        background-color: #4CAF50;
+        color: white;
+
+        &:hover {
+          background-color: #45a049;
+        }
+      }
+
+      &.student-button {
+        background-color: #008CBA;
+        color: white;
+
+        &:hover {
+          background-color: #007bb5;
+        }
+      }
     }
   }
 }

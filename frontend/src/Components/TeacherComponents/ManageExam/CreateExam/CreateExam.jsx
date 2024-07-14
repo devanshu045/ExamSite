@@ -3,19 +3,24 @@ import "./CreateExam.scss";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
+import TeacherLogin from "../../Registration/Login/TeacherLogin";
+// import { useDispatch, useSelector } from 'react-redux';
+// import { StoreUniqueId } from '../../../../Redux/Slice/UniqueId';
 
 const CreateExam = () => {
   // Get current date for default date value
   const currentDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD format
   const navigator = useNavigate()
 
+  // const dispatch = useDispatch();
+  // const uniqueId = useSelector((state) => state.Uniqid.uniqueId);
+
   const [ExamDetails, setExamDetails] = useState({
     uniqueId:'',
     ExamName: '',
     ExamDate: '',
     ExamTime: '',
-    ExamTimeFrom: '',
-    ExamTimeTo: '',
+    ExamDuration: '',
   });
 
   // Event handler for date input focus
@@ -34,6 +39,7 @@ const CreateExam = () => {
   
   const generateUniqueId = () => {
    const  newuniqueid = uuidv4();
+  //  dispatch(StoreUniqueId(newuniqueid));
     return newuniqueid;
 
   };
@@ -64,7 +70,10 @@ const CreateExam = () => {
 
   return (
     <div className="CreateExam_Container">
-      <form onSubmit={hangleFormSubmit} className="CreateExam_Form">
+     {  localStorage.getItem("teacherlogin") == null ? 
+           <TeacherLogin/>
+         :
+        <form onSubmit={hangleFormSubmit} className="CreateExam_Form">
         <label htmlFor="examName">Enter Your Exam Name</label>
         <input
           type="text"
@@ -73,8 +82,8 @@ const CreateExam = () => {
           value={ExamDetails.ExamName}
           onChange={handleInputChange}
         />
-
-        <label htmlFor="examDate">Enter Date</label>
+          
+        <label htmlFor="examDate">Exam Date</label>
         <input
           type="date"
           id="examDate"
@@ -85,7 +94,7 @@ const CreateExam = () => {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="examTime">Enter Time</label>
+        <label htmlFor="examTime">Exam Start Time</label>
         <input
           type="time"
           id="examTime"
@@ -95,21 +104,12 @@ const CreateExam = () => {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="examDurationFrom">Duration of exam (From)</label>
+        <label htmlFor="examDurationFrom">Exam Duration</label>
         <input
           type="time"
           id="examDurationFrom"
-          name="ExamTimeFrom"
-          value={ExamDetails.ExamTimeFrom}
-          onChange={handleInputChange}
-        />
-
-        <label htmlFor="examDurationTo">Duration of exam (To)</label>
-        <input
-          type="time"
-          id="examDurationTo"
-          name="ExamTimeTo"
-          value={ExamDetails.ExamTimeTo}
+          name="ExamDuration"
+          value={ExamDetails.ExamDuration}
           onChange={handleInputChange}
         />
 
@@ -117,6 +117,7 @@ const CreateExam = () => {
           Create
         </button>
       </form>
+            }
     </div>
   );
 };

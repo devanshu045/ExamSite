@@ -5,16 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 const AddQuestions = () => {
     const [questions, setQuestions] = useState([]);
-    const navigator = useNavigate();
+    const navigate = useNavigate();
 
     const handleAddQuestion = () => {
         setQuestions([...questions, {
+            uniqueId: '',
             question: '',
             optionA: '',
             optionB: '',
             optionC: '',
             optionD: '',
-            Answere:''
+            answere: ''
         }]);
     };
 
@@ -25,26 +26,26 @@ const AddQuestions = () => {
         setQuestions(updatedQuestions);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        navigator('/teacher/dashboard')
-        console.log(questions);
-           const uniqueId = localStorage.getItem('uniqueId');
+        const uniqueId = localStorage.getItem('uniqueId');
 
-           axios.post("http://localhost:8080/teacher/AddQuestions",{questions,uniqueId})
-           .then((response) => {
+        const updatedQuestions = questions.map(question => ({
+            ...question,
+            uniqueId: uniqueId
+        }));
+
+        try {
+            const response = await axios.post("http://localhost:8080/teacher/AddQuestions", updatedQuestions);
             console.log(response);
-           })
-           .catch((error) => {
-            console.log(error);
-           })
-
-        
+            navigate('/teacher/dashboard');
+        } catch (error) {
+            console.error("Error adding questions:", error);
+        }
     };
 
     const handleDeleteQuestion = (index) => {
-        const newQuestion = questions.filter((val,ind)=> ind != index)
-                  setQuestions(newQuestion);
+        setQuestions(questions.filter((_, ind) => ind !== index));
     }
 
     return (
@@ -97,16 +98,16 @@ const AddQuestions = () => {
                             onChange={(e) => handleChange(e, index)}
                             required
                         />
-                         <label htmlFor={`Answere_${index}`}>Correct Answere</label>
+                        <label htmlFor={`answere_${index}`}>Correct Answere</label>
                         <input
                             type="text"
-                            id={`Answere_${index}`}
-                            name="Answere"
-                            value={question.Answere}
+                            id={`answere_${index}`}
+                            name="answere"
+                            value={question.answere}
                             onChange={(e) => handleChange(e, index)}
                             required
                         />
-                        <button onClick={()=>handleDeleteQuestion(index)}>Delete</button>
+                        <button type="button" onClick={() => handleDeleteQuestion(index)}>Delete</button>
                     </div>
                 ))}
                 <button type="button" onClick={handleAddQuestion}>Add Question</button>
