@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    border: 2px solid black;
   }
   
   .Tech_Sign_formWrapper {
@@ -11,8 +12,9 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: 0.5rem;
     padding: 2rem;
-    width: 100%;
-    max-width: 24rem;
+    width: 40%;
+    // max-width: 24rem;
+    border: 2px solid red;
   }
   
   .Tech_Sign_label {
