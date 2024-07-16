@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import './TeacherDashboard.scss'
 
 const TeacherDashboard = () => {
   const [allexams, setAllExam] = useState([]);
@@ -7,9 +8,10 @@ const TeacherDashboard = () => {
   useEffect(() => {
     const fetchExams = async () => {
       const logincheck = localStorage.getItem("teacherlogin");
+      console.log(logincheck)
       try {
         const response = await axios.get(
-          "/TeacherAllExam",
+          "http://localhost:8080/teacher/teacherAllExam",
           {
             params: { teacherId: logincheck },
           }
@@ -22,19 +24,22 @@ const TeacherDashboard = () => {
     console.log(allexams);
     fetchExams();
   }, []); // Empty dependency array to ensure it runs only once
+  console.log(allexams)
 
   return (
-    <div>
-      <h1>Your Exams</h1>
+    <div className="teacher-dashboard">
+      <h1 className="title">Your Exams</h1>
       {allexams.length > 0 ? (
         allexams.map((exam, index) => (
-          <div key={index}>
-            <h2>{exam.title}</h2>
-            <p>{exam.description}</p>
+          <div className="exam-card" key={index}>
+            <h2 className="exam-name">{exam.ExamName}</h2>
+            <p className="exam-date">{exam.ExamDate}</p>
+            <p className="exam-time">{exam.ExamTime}</p>
+            <p className="exam-duration">{exam.ExamDuration}</p>
           </div>
         ))
       ) : (
-        <p>Loading exams...</p>
+        <p className="no-exams-message">No exams found.</p>
       )}
     </div>
   );

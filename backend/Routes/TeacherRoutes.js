@@ -7,7 +7,7 @@ router.post('/Signin', teacherSign);
 router.post('/Login', teacherLogin);
 router.post('/AddQuestions', teacherAddQuestions)
 router.post('/CreateExam',CreateExam)
-router.get('/TeacherAllExam',teacherAllExam)
+router.get('/teacherAllExam',teacherAllExam)
 
 
 module.exports = router;

@@ -64,18 +64,17 @@ exports.CreateExam = (req,res) =>{
 
 
 
-exports.teacherAllExam = (req, res) => {
-    const {Email} = req.query;
-    console.log("haa bhai kuch hua hai")
+exports.teacherAllExam = async (req, res) => {
+    console.log("Endpoint hit: teacherAllExam");
+    const { Email } = req.query;
   
-  try{
-      const getExamsDetails = ExamDetailsModule.find({Email});
-      consolg.log(getExamsDetails);
+    try {
+      const getExamsDetails = await ExamDetailsModule.find({ Email });
+      console.log('Data retrieved:', getExamsDetails);
       res.status(200).send(getExamsDetails);
-  }
-
-  catch{
-      consolg.log("kuch sahi nhi hai")
-  }
-
-}
+    } catch (error) {
+      console.error("Error in getting data:", error);
+      res.status(400).send('Server side issue');
+    }
+  };
+  

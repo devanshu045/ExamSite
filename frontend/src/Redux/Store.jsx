@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import QuestionReducer from './Slice/QuestionSlice';
+import UniqueIdReducer from './Slice/UniqueId';
 
-const Store = configureStore({
+const store = configureStore({
   reducer: {
-    questions: QuestionReducer,
+    Uniqid: UniqueIdReducer,
   },
 });
 
-export default Store;
+export default store;
